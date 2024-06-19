@@ -1,10 +1,9 @@
 package id.global.apps.pdfesig.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.time.OffsetDateTime;
-import java.util.Date;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RestModels {
     public record UploadPdfResponse(

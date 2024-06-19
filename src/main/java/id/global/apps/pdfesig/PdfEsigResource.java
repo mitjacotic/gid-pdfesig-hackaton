@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-import id.global.apps.pdfesig.model.RestModels;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import id.global.apps.pdfesig.model.RestModels;
 import id.global.apps.pdfesig.repository.PdfRepository;
 import id.global.apps.pdfesig.services.PdfEsigService;
 import io.quarkus.security.Authenticated;
@@ -54,7 +54,5 @@ public class PdfEsigResource {
         log.info("uploading file for user {}", jwt.getSubject());
         return pdfEsigService.uploadPdf(UUID.fromString(jwt.getSubject()), input);
     }
-
-
 
 }
