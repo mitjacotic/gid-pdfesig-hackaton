@@ -20,9 +20,9 @@ jobs:
           - name: "JVM"
             dockerfile: src/main/docker/Dockerfile.jvm
             image: ghcr.io/${{ github.repository_owner }}/pdfesign
-          - name: "Native"
-            dockerfile: src/main/docker/Dockerfile.multistage
-            image: ghcr.io/${{ github.repository_owner }}/pdfesign-native
+          # - name: "Native"
+          #   dockerfile: src/main/docker/Dockerfile.multistage
+          #   image: ghcr.io/${{ github.repository_owner }}/pdfesign-native
     concurrency:
       group: "${{ github.workflow }}-${{ github.ref }}-${{ matrix.name }}"
       cancel-in-progress: false
