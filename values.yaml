@@ -1,0 +1,26 @@
+image:
+  repository: ghcr.io/mitjacotic/pdfesign
+  pullPolicy: Always
+  tag: latest
+
+env:
+  UPLOAD_PATH: "/upload"
+
+persistence:
+  enabled: true
+  mountPath: /upload
+  storage: 1Gi
+
+ports:
+  - name: http
+    containerPort: 8080
+    protocol: TCP
+
+livenessProbe:
+  httpGet: ~
+
+readinessProbe:
+  httpGet: ~
+
+deploymentStrategy:
+  type: Recreate
