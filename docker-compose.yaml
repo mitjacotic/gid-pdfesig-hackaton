@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=pdfesig
+    ports:
+      - '5432:5432'
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./docker-compose-db-extensions.sql:/docker-entrypoint-initdb.d/init_db.sql
+  rabbit:
+    image: "rabbitmq:3-management"
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    volumes:
+      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config
+      - ./rabbitmq-defs.json:/etc/rabbitmq/rabbitmq-defs.json
+  iris-router:
+    image: ghcr.io/iris-events/router-native:v3.0.3
+    environment:
+      - RABBIT_HOST=rabbit
+      - RABBIT_PORT=5672
+      - RABBIT_PROTOCOL=amqp
+      - RABBIT_USERNAME=guest
+      - RABBIT_PASSWORD=guest
+      - JWT_ISSUER=https://auth.globalid.dev/realms/globalid
+      - mp.messaging.connector.smallrye-rabbitmq.ssl=false
+    ports:
+      - '8088:8080'
+    depends_on:
+      - rabbit
+volumes:
+  db:
+    driver: local
+networks:
+  default:
+    name: directory
