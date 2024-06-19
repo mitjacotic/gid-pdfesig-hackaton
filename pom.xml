@@ -1,11 +1,23 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>-
+    <repositories>
+        <repository>
+            <id>globalid</id>
+            <url>https://repository.tools.global.id/repository/maven-public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <parent>
         <groupId>id.global</groupId>
         <artifactId>microservice-parent</artifactId>
         <version>10.2</version>
-        <relativePath>master-pom.xml</relativePath>
     </parent>
 
     <groupId>id.global.pdfesig</groupId>
