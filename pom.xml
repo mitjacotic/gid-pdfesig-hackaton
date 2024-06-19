@@ -14,6 +14,19 @@
         </repository>
     </repositories>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>globalid</id>
+            <url>https://repository.tools.global.id/repository/maven-public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
     <parent>
         <groupId>id.global</groupId>
         <artifactId>microservice-parent</artifactId>
