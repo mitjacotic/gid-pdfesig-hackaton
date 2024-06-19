@@ -5,7 +5,7 @@
         <groupId>id.global</groupId>
         <artifactId>globalid-parent</artifactId>
         <version>18</version>
-        <relativePath />
+        <relativePath>gid-pom.xml</relativePath>
     </parent>
     <version>37-SNAPSHOT</version>
     <artifactId>masterpom</artifactId>

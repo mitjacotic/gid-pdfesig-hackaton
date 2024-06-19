@@ -5,7 +5,7 @@
         <groupId>id.global</groupId>
         <artifactId>microservice-parent</artifactId>
         <version>10.2</version>
-        <relativePath>master-pom.xml</relativePath>
+        <relativePath>microservice-pom.xml</relativePath>
     </parent>
 
     <groupId>id.global.pdfesig</groupId>
