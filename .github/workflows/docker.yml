@@ -38,10 +38,13 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - shell: sh
-        run: mvn -B package -DskipTests -ntp
+      - name: Build project
+        shell: bash
+        run: mvn $MAVEN_CLI_OPTS package $MAVEN_OPS
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MAVEN_OPS: "-Dmaven.test.skip=true -Dtest.skip.docker=true"
+          MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version -DinstallAtEnd=true -ntp -Dno-format -Dci"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
