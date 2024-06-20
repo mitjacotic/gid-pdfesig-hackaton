@@ -35,3 +35,8 @@ pom.xml.versionsBackup
 release.properties
 
 .env
+
+release.properties
+
+.mvn
+.quarkus
