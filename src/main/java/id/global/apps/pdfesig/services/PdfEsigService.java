@@ -84,6 +84,19 @@ public class PdfEsigService {
         return new RestModels.PdfItem(pdfJpa.id, pdfJpa.fileName, pdfJpa.createdAt);
     }
 
+    @Transactional
+    public RestModels.PdfItem getPdfById(UUID id) {
+        var pdfJpa = pdfRepository
+                .find(" id = :id",
+                        Parameters.with("id", id))
+                .singleResultOptional().orElse(null);
+        if(pdfJpa == null) {
+            return null;
+        }
+
+        return new RestModels.PdfItem(pdfJpa.id, pdfJpa.fileName, pdfJpa.createdAt);
+    }
+
     public static class FileUploadInput {
         @FormParam("text")
         public String text;

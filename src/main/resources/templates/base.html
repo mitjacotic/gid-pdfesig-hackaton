@@ -1,0 +1,20 @@
+{#include layout.html}
+
+{#nav}
+    logged in as <h1>{name}</h1>
+    <a href="/web/logout">Logout</a>
+{/nav}
+{#content}
+
+    {#if has_items}
+    <h3>Your signed PDFs:</h3>
+    <ul>
+        {#for item in pdflist}
+            <li><a href="   /pdf/{item.id}"><span>{item.fileName}</span><span>{item.createdAt}</span></a></li>
+        {/for}
+    </ul>
+    {#else}
+        <div>You have no signed PDFs yet.</div>
+    {/if}
+{/content}
+{/include}

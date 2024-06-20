@@ -73,7 +73,11 @@
       <groupId>org.hibernate.orm</groupId>
       <artifactId>hibernate-core</artifactId>
     </dependency>
-
+   <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-oidc</artifactId>
+        <version>${quarkus.platform.version}</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

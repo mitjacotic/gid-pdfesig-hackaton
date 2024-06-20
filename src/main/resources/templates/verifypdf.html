@@ -1,0 +1,32 @@
+{#include layout.html}
+{#nav}
+    {#if notFound}
+        <h2>No such file.</h2>
+    {#else}
+        <h2>{pdf.fileName}</h2>
+        created at {pdf.createdAt}
+    {/if}
+{/nav}
+{#content}
+    {#if !notFound}
+        <script src="//cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+        <div id="qrcode"></div>
+
+        <script>
+            function renderQR() {
+                const el = document.getElementById("qrcode");
+                if(!el) return setTimeout(renderQr, 300);
+                let qrcode = new QRCode(el, {
+                    text: "https://www.global.id/sign?docId={pdf.id}",
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+            }
+
+            renderQR();
+
+        </script>
+    {/if}
+{/content}
+{/include}
